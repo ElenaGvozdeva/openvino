@@ -12,4 +12,8 @@ TEST_P(InterpolateLayerTest, CompareWithRefs) {
     Run();
 }
 
+TEST_P(Interpolate1LayerTest, CompareWithRefs) {
+    Run();
+}
+
 }  // namespace LayerTestsDefinitions
