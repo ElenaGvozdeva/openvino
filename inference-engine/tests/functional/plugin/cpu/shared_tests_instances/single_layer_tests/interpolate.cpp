@@ -192,4 +192,20 @@ INSTANTIATE_TEST_CASE_P(smoke_Interpolate_Nearest_Down_Sample_Tail, InterpolateL
         ::testing::Values(additional_config)),
     InterpolateLayerTest::getTestCaseName);
 
+const std::vector<std::string> mode = {"nearest", "linear"};
+const std::vector<ngraph::AxisSet> axes ={{2, 3}};
+
+INSTANTIATE_TEST_CASE_P(smoke_Interpolate_1, Interpolate1LayerTest, ::testing::Combine(
+        ::testing::Values(InferenceEngine::Precision::FP16),
+        ::testing::Values(InferenceEngine::Precision::FP16),
+        ::testing::Values(InferenceEngine::Layout::NCHW),
+        ::testing::ValuesIn(inShapes),
+        ::testing::ValuesIn(targetShapesTailTest),
+        ::testing::ValuesIn(mode),
+        ::testing::ValuesIn(axes),
+        ::testing::ValuesIn(antialias),
+        ::testing::ValuesIn(pads),
+        ::testing::Values(CommonTestUtils::DEVICE_CPU)),
+    Interpolate1LayerTest::getTestCaseName);
+
 } // namespace
